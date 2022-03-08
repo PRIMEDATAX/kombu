@@ -333,8 +333,11 @@ class Channel(virtual.Channel):
                     'message': message
                 }).encode('utf-8'),
             },
-            "name": self.cloud_task_queue_path + "/tasks/" + "_".join(
-                    [exchange, uuid()]),
+            # from gcp documentation: https://cloud.google.com/tasks/docs/creating-http-target-tasks#python
+            # If you chose to specify a name for the task, Cloud Tasks can use that name to ensure
+            # task deduplication, although the processing necessary for this can add increased latency.
+            # "name": self.cloud_task_queue_path + "/tasks/" + "_".join(
+            #         [exchange, uuid()]),
             "schedule_time": ts,
         }
 

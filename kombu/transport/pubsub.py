@@ -44,8 +44,6 @@ class Worker(Thread):
     def run(self):
         ''' run '''
         while True:
-            logger.info("".join(["Pulling messsage using subscription ",
-                self.subscription_path]))
             try:
                 resp =\
                     self.subscriber.pull(

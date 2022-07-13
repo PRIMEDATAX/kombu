@@ -282,7 +282,6 @@ class Channel(virtual.Channel):
         :type body: str
         """
         if exchange not in self.state.exchanges:
-            logger.info("".join(["adding topic: ", exchange, " to state"]))
             topic_path = self._get_topic_path(exchange)
             self.state.exchanges[exchange] = topic_path
 
